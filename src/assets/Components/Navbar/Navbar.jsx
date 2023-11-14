@@ -1,11 +1,12 @@
+import { NavLink } from 'react-router-dom';
 const Navbar = () => {
   const navItems = (
     <>
-      <li><a>Home</a></li>
-      <li><a>Contact Us</a></li>
-      <li><a>DASHBOARD</a></li>
-      <li><a>Our Menu</a></li>
-      <li><a>Our Shop</a></li>
+      <li><NavLink to ="/">Home</NavLink></li>
+      <li><NavLink to = "/contactUs">Contact Us</NavLink></li>
+      <li><a>Dashboard</a></li>
+      <li><NavLink to ="/menu">Our Menu</NavLink></li>
+      <li><NavLink to = "/ourShop">Our Shop</NavLink></li>
     </>
   );
 

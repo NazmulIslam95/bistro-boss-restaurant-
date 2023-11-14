@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Banner from "../../../Components/Banner/Banner";
 import BistroBoss from "../../../Components/BistroBoss/BistroBoss";
 import Callus from "../../../Components/CallUs/Callus";
@@ -26,6 +27,9 @@ const Home = () => {
         <Testimonials></Testimonials>
       </div>
       <Footer></Footer>
+      <Helmet>
+        <title>BistroBoss | Home</title>
+      </Helmet>
     </div>
   );
 };
