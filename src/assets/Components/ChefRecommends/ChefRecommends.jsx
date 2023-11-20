@@ -5,7 +5,7 @@ const ChefRecommends = () => {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    fetch("recommends.json")
+    fetch("http://localhost:5000/recommend")
       .then((res) => res.json())
       .then((data) => setCards(data));
   }, []);
