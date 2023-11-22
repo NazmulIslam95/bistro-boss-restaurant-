@@ -1,13 +1,45 @@
-import { NavLink } from 'react-router-dom';
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   const navItems = (
     <>
-      <li><NavLink to ="/">Home</NavLink></li>
-      <li><NavLink to = "/contactUs">Contact Us</NavLink></li>
-      <li><a>Dashboard</a></li>
-      <li><NavLink to ="/menu">Our Menu</NavLink></li>
-      <li><NavLink to = "/ourShop">Our Shop</NavLink></li>
-      <li><NavLink to = "/logIn">Log In</NavLink></li>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/contactUs">Contact Us</NavLink>
+      </li>
+      <li>
+        <a>Dashboard</a>
+      </li>
+      <li>
+        <NavLink to="/menu">Our Menu</NavLink>
+      </li>
+      <li>
+        <NavLink to="/ourShop">Our Shop</NavLink>
+      </li>
+      {user ? (
+        <>
+          <li>
+            <NavLink onClick={handleLogOut}>Log Out</NavLink>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <NavLink to="/logIn">Log In</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -40,15 +72,20 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="ml-16 ">
-            <h1 className="uppercase font-serif text-2xl font-extrabold">Bistro Boss</h1>
-            <h1 className="uppercase font-serif text-base font-bold tracking-widest ">R e s t a u r a n t</h1>
+            <h1 className="uppercase font-serif text-2xl font-extrabold">
+              Bistro Boss
+            </h1>
+            <h1 className="uppercase font-serif text-base font-bold tracking-widest ">
+              R e s t a u r a n t
+            </h1>
           </div>
         </div>
         <div className="navbar-end">
           <div className="navbar-center hidden lg:flex ">
-            <ul className="menu menu-horizontal px-1 text-sm font-extrabold uppercase">{navItems}</ul>
+            <ul className="menu menu-horizontal px-1 text-sm font-extrabold uppercase">
+              {navItems}
+            </ul>
           </div>
-          
         </div>
       </div>
     </div>
